@@ -24,7 +24,7 @@ $(document).ready(function(){
     
     var CrazyMaker = function() {
       for (var i = 0; i < dancers.length; i++) {
-        topPos = $("body").height() * (Math.random());
+        topPos = $("body").height() * (Math.floor(Math.random()* 2));
         leftPos = $("body").width() * (Math.random());
         dancers[i].goSomewhere(topPos,leftPos, 800);
       }
@@ -73,7 +73,7 @@ $(document).ready(function(){
 
   $(".crazyShit").on("click", function(event) {
 
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 20; i++) {
 
       var dancer = new BlinkyDancer(
         $("body").height() * (Math.random()),
