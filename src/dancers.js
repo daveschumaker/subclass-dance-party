@@ -40,7 +40,7 @@ Dancer.prototype.goSomewhere = function(top, left, timeToMove) {
   left: top,
   top: left
   }, timeToMove, function() {}); 
-  console.log('Top: ' + top + ' Left: ' + left); 
+  //console.log('Top: ' + top + ' Left: ' + left); 
 };
 
 
@@ -78,6 +78,10 @@ var AlienDancer = function(top,left,timeBetweenSteps) {
 
 AlienDancer.prototype = Object.create(BlinkyDancer.prototype);
 AlienDancer.prototype.constructor = AlienDancer;
+
+AlienDancer.prototype.swim = function(){
+
+};
 
 // Kungfu cat class
 var KungFuKitty = function(top,left,timeBetweenSteps) {

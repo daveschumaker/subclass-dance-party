@@ -1,7 +1,7 @@
 // Make a random position.
 var makeRandomPosition = function() {
-  var top = Math.floor($(window).width() * (Math.random()) - 150);
-  var left = Math.floor($(window).height() * (Math.random()) - 100);
+  var top = Math.floor(($(window).width()-150) * (Math.random()));
+  var left = Math.floor(($(window).height()-100) * (Math.random()));
   if (left < 50) {
     left += 75;
   }
@@ -24,12 +24,13 @@ $(document).ready(function(){
   var getDown;
   window.dancers = [];
   $(".lineUpButton").on("click", function(){
+    
     clearInterval(getDown);
     var verticalOffset = 100;
     var horizOffset = 20;
 
-    var topPos = 100;
-    var leftPos = 50;
+    var topPos = 75;
+    var leftPos = 150;
 
     for(var i = 0; i < dancers.length; i++){
     
@@ -51,7 +52,7 @@ $(document).ready(function(){
   // KABOOM !!!
   $(".makeCrazy").on("click", function() {
     
-    var CrazyMaker = function() {
+    var crazyMaker = function() {
       for (var i = 0; i < dancers.length; i++) {
         var topPos = makeRandomPosition()[0];
         var leftPos = makeRandomPosition()[1];
@@ -64,8 +65,8 @@ $(document).ready(function(){
       }
     };
 
-    CrazyMaker();
-    getDown = setInterval(function(){CrazyMaker();}, 500);
+    crazyMaker();
+    getDown = setInterval(function(){crazyMaker();}, 500);
 
     // for (var i = 0; i < 500; i++) {
     //   getDown();
@@ -94,45 +95,41 @@ $(document).ready(function(){
 
     // make a dancer with a random position
 
-    // var topPos = $(".dancerframe").height() * (Math.random());
-    // var leftPos = $(".dancerframe").width() * (Math.random());
-    var topPos = makeRandomPosition()[1];
-    var leftPos = makeRandomPosition()[0];
-
     var dancer = new dancerMakerFunction(
-      topPos, leftPos,
+      makeRandomPosition()[1], makeRandomPosition()[0],
       Math.random() * 1000
     );
     dancers.push(dancer);
     console.log('Adding dancer!');
     $('.dancerframe').append(dancer.$node);
   });
-//CRAZY ADD LOST OF SHIT BUTTON
+//CRAZY ADD LOTS OF SHIT BUTTON
   $(".crazyShit").on("click", function(event) {
+    var randomDancer = function() {
+      var dancerArray = ['AlienDancer','BlinkyDancer','KungFuKitty']; // Name dancer functions here
+      var rando = Math.floor(Math.random() * dancerArray.length);
+      return dancerArray[rando];
+    };
+
+
 
     for (var i = 0; i < 20; i++) {
-      var topPos = makeRandomPosition()[1];
-      var leftPos = makeRandomPosition()[0];
-
-      var dancer = new BlinkyDancer(
-        // $(".dancerframe").height() * (Math.random()),
-        // $(".dancerframe").width() * (Math.random()),
-        topPos, leftPos,
+    var getDancer = randomDancer();
+    var dancerMakerFunction = window[getDancer];      
+      var dancer = new dancerMakerFunction(
+        makeRandomPosition()[1], makeRandomPosition()[0],
         Math.random() * 1000);
       $('.dancerframe').append(dancer.$node);
       dancers.push(dancer);
-
-      var topPos = makeRandomPosition()[1];
-      var leftPos = makeRandomPosition()[0];
-      var dancer = new AlienDancer(
-        topPos, leftPos,
-        Math.random() * 1000
-      );
-      $('.dancerframe').append(dancer.$node);
-      dancers.push(dancer);
-      };
-
-
+      
+      // var dancer = new AlienDancer(
+      //   makeRandomPosition()[1], makeRandomPosition()[0],
+      //   Math.random() * 1000
+      // );
+      // $('.dancerframe').append(dancer.$node);
+      // dancers.push(dancer);
+      // };
+    }
   });
 });
 
