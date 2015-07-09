@@ -1,5 +1,20 @@
 $(document).ready(function(){
   window.dancers = [];
+$(".lineUpButton").on("click", function(){
+  var verticalOffset = 40;
+  var horizOffset = 20;
+
+  var topPos = 0;
+  var leftPos = 0;
+
+  for(var i = 0; i < dancers.length; i++){
+  
+    dancers[i].setPosition(topPos,leftPos);
+    topPos = topPos + verticalOffset;
+    leftPos = leftPos + horizOffset;
+  }
+
+});
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
@@ -30,6 +45,30 @@ $(document).ready(function(){
     dancers.push(dancer);
     console.log('Adding dancer!');
     $('body').append(dancer.$node);
+  });
+
+  $(".crazyShit").on("click", function(event) {
+
+    for (var i = 0; i < 1000; i++) {
+
+      var dancer = new BlinkyDancer(
+        $("body").height() * (Math.random()),
+        $("body").width() * (Math.random()),
+        Math.random() * 1000);
+      $('body').append(dancer.$node);
+      dancers.push(dancer);
+
+
+      var dancer = new AlienDancer(
+        $("body").height() * (Math.random()),
+        $("body").width() * (Math.random()),
+        Math.random() * 1000
+      );
+      $('body').append(dancer.$node);
+      dancers.push(dancer);
+      };
+
+
   });
 });
 
