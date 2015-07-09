@@ -2,14 +2,19 @@ body, html{
   height:100%;
 }
 body{
-  background-image: url(images/background.jpg);
-  background-size:cover;
   margin: 0px;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
+.dancerframe {
+  background-image: url(images/background.jpg);
+  background-size:cover;
+  width: 100%;
+  height: 100%;
+}
+
 .title, .addDancerButton{
   padding:5px 12px;
   float:right;
@@ -24,16 +29,16 @@ body, a:link, a:visited, a:active{
 .dancer{
   /*border:10px solid red;
   border-radius:10px;*/
-  width: 50px;
-  height: 50px;
+  width: 0%;
+  height: 0%;
   position:absolute;
 }
 
 .shark{
   /*border:10px solid red;
   border-radius:10px;*/
-  width: 50px;
-  height: 50px;
+  width: 0%;
+  height: 0%;
   position:absolute;
 }
 

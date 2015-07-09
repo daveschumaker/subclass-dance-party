@@ -1,6 +1,30 @@
+// Make a random position.
+var makeRandomPosition = function() {
+  var top = Math.floor($(window).width() * (Math.random()) - 150);
+  var left = Math.floor($(window).height() * (Math.random()) - 100);
+  if (left < 50) {
+    left += 75;
+  }
+  if(top < 50){
+    top += 150;
+  }
+
+  if(top > $(window).width()){
+    top = $(window).width() - 500;
+  }
+  if(left > $(window).height()){
+    left = $(window).height() - 500;
+  }
+  return [top, left];
+}
+
+
+
 $(document).ready(function(){
+  var getDown;
   window.dancers = [];
   $(".lineUpButton").on("click", function(){
+    clearInterval(getDown);
     var verticalOffset = 100;
     var horizOffset = 20;
 
@@ -19,24 +43,33 @@ $(document).ready(function(){
       leftPos = leftPos + horizOffset;
     }
   });
+//  return Math.floor(Math.random() * (max - min)) + min;
 
+        var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        var viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+  // KABOOM !!!
   $(".makeCrazy").on("click", function() {
     
     var CrazyMaker = function() {
       for (var i = 0; i < dancers.length; i++) {
-        topPos = $("body").height() * (Math.floor(Math.random()* 2));
-        leftPos = $("body").width() * (Math.random());
+        var topPos = makeRandomPosition()[0];
+        var leftPos = makeRandomPosition()[1];
+
+        //var topPos = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        //var leftPos = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+        topPos, leftPos, 
         dancers[i].goSomewhere(topPos,leftPos, 800);
       }
     };
 
     CrazyMaker();
+    getDown = setInterval(function(){CrazyMaker();}, 500);
 
-    //for (var i = 0; i < 50; i++) {
-      setInterval(function() {
-        CrazyMaker();
-      }, 500);
-    //}
+    // for (var i = 0; i < 500; i++) {
+    //   getDown();
+    // }
 
   });
 
@@ -61,8 +94,10 @@ $(document).ready(function(){
 
     // make a dancer with a random position
 
-    var topPos = $("body").height() * (Math.random());
-    var leftPos = $("body").width() * (Math.random());
+    // var topPos = $(".dancerframe").height() * (Math.random());
+    // var leftPos = $(".dancerframe").width() * (Math.random());
+    var topPos = makeRandomPosition()[1];
+    var leftPos = makeRandomPosition()[0];
 
     var dancer = new dancerMakerFunction(
       topPos, leftPos,
@@ -70,27 +105,30 @@ $(document).ready(function(){
     );
     dancers.push(dancer);
     console.log('Adding dancer!');
-    $('body').append(dancer.$node);
+    $('.dancerframe').append(dancer.$node);
   });
-
+//CRAZY ADD LOST OF SHIT BUTTON
   $(".crazyShit").on("click", function(event) {
 
     for (var i = 0; i < 20; i++) {
+      var topPos = makeRandomPosition()[1];
+      var leftPos = makeRandomPosition()[0];
 
       var dancer = new BlinkyDancer(
-        $("body").height() * (Math.random()),
-        $("body").width() * (Math.random()),
+        // $(".dancerframe").height() * (Math.random()),
+        // $(".dancerframe").width() * (Math.random()),
+        topPos, leftPos,
         Math.random() * 1000);
-      $('body').append(dancer.$node);
+      $('.dancerframe').append(dancer.$node);
       dancers.push(dancer);
 
-
+      var topPos = makeRandomPosition()[1];
+      var leftPos = makeRandomPosition()[0];
       var dancer = new AlienDancer(
-        $("body").height() * (Math.random()),
-        $("body").width() * (Math.random()),
+        topPos, leftPos,
         Math.random() * 1000
       );
-      $('body').append(dancer.$node);
+      $('.dancerframe').append(dancer.$node);
       dancers.push(dancer);
       };
 

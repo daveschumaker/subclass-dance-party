@@ -39,13 +39,16 @@ Dancer.prototype.goSomewhere = function(top, left, timeToMove) {
   this.$node.animate({
   left: top,
   top: left
-  }, timeToMove, function() {});  
+  }, timeToMove, function() {}); 
+  console.log('Top: ' + top + ' Left: ' + left); 
 };
 
 
 /****
 * SUB CLASS DANCERS WHO DON'T GET DOWN AND BOOGER BUT BOOGIE
 ****/
+
+// Blinky Dancer Class
 var BlinkyDancer = function(top, left, timeBetweenSteps){
   Dancer.apply(this, arguments);
 
@@ -64,7 +67,7 @@ BlinkyDancer.prototype.step = function(){
   //this.$node.toggle();
 };
 
-
+// AlienDancer Class (AKA Shark)
 var AlienDancer = function(top,left,timeBetweenSteps) {
   BlinkyDancer.apply(this, arguments);
   this.$node = $('<span class="shark" data-dance="dancer_'+ dancerCounter +'"><img src="images/shark.gif"></span>');
@@ -76,12 +79,14 @@ var AlienDancer = function(top,left,timeBetweenSteps) {
 AlienDancer.prototype = Object.create(BlinkyDancer.prototype);
 AlienDancer.prototype.constructor = AlienDancer;
 
-AlienDancer.prototype.setPosition = function(top, left){
-  var styleSettings = {
-    top: top,
-    left: left
-    //border: '15px solid green'
-  };
-  this.$node.css(styleSettings);
-};
+// Kungfu cat class
+var KungFuKitty = function(top,left,timeBetweenSteps) {
+  BlinkyDancer.apply(this, arguments);
+  this.$node = $('<span class="shark" data-dance="dancer_'+ dancerCounter +'"><img src="images/kungFuCat.gif"></span>');
+  this.setPosition(top,left);
+  this.step();
+}
+
+KungFuKitty.prototype = Object.create(BlinkyDancer.prototype);
+KungFuKitty.prototype.constructor = KungFuKitty;
 
