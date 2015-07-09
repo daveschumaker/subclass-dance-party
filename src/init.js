@@ -1,20 +1,44 @@
 $(document).ready(function(){
   window.dancers = [];
-$(".lineUpButton").on("click", function(){
-  var verticalOffset = 100;
-  var horizOffset = 20;
+  $(".lineUpButton").on("click", function(){
+    var verticalOffset = 100;
+    var horizOffset = 20;
 
-  var topPos = 0;
-  var leftPos = 0;
+    var topPos = 100;
+    var leftPos = 50;
 
-  for(var i = 0; i < dancers.length; i++){
-  
-    dancers[i].goSomewhere(topPos,leftPos);
-    topPos = topPos + verticalOffset;
-    leftPos = leftPos + horizOffset;
-  }
+    for(var i = 0; i < dancers.length; i++){
+    
+      if (i % 10 === 0) {
+        topPos = 100;
+        leftPos = leftPos - 100;
+      }
 
-});
+      dancers[i].goSomewhere(topPos,leftPos);
+      topPos = topPos + verticalOffset;
+      leftPos = leftPos + horizOffset;
+    }
+  });
+
+  $(".makeCrazy").on("click", function() {
+    
+    var CrazyMaker = function() {
+      for (var i = 0; i < dancers.length; i++) {
+        topPos = $("body").height() * (Math.random());
+        leftPos = $("body").width() * (Math.random());
+        dancers[i].goSomewhere(topPos,leftPos, 800);
+      }
+    };
+
+    CrazyMaker();
+
+    //for (var i = 0; i < 50; i++) {
+      setInterval(function() {
+        CrazyMaker();
+      }, 500);
+    //}
+
+  });
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer

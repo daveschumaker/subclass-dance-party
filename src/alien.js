@@ -1,5 +1,6 @@
 var AlienDancer = function(top,left,timeBetweenSteps) {
   BlinkyDancer.apply(this, arguments);
+  this.$node = $('<span class="shark" data-dance="dancer_'+ dancerCounter +'"><img src="images/shark.gif"></span>');
   //this.color = 'green';
 };
 

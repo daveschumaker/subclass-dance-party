@@ -29,6 +29,14 @@ body, a:link, a:visited, a:active{
   position:absolute;
 }
 
+.shark{
+  /*border:10px solid red;
+  border-radius:10px;*/
+  width: 50px;
+  height: 50px;
+  position:absolute;
+}
+
 .headbanger{
   display: block;
   background-image: url(images/head-bangin.gif);
