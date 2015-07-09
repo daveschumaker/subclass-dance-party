@@ -1,7 +1,7 @@
 $(document).ready(function(){
   window.dancers = [];
 $(".lineUpButton").on("click", function(){
-  var verticalOffset = 40;
+  var verticalOffset = 100;
   var horizOffset = 20;
 
   var topPos = 0;
@@ -9,7 +9,7 @@ $(".lineUpButton").on("click", function(){
 
   for(var i = 0; i < dancers.length; i++){
   
-    dancers[i].setPosition(topPos,leftPos);
+    dancers[i].goSomewhere(topPos,leftPos);
     topPos = topPos + verticalOffset;
     leftPos = leftPos + horizOffset;
   }
@@ -49,7 +49,7 @@ $(".lineUpButton").on("click", function(){
 
   $(".crazyShit").on("click", function(event) {
 
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 100; i++) {
 
       var dancer = new BlinkyDancer(
         $("body").height() * (Math.random()),
