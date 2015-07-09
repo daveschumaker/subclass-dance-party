@@ -1,7 +1,9 @@
 var AlienDancer = function(top,left,timeBetweenSteps) {
   BlinkyDancer.apply(this, arguments);
   this.$node = $('<span class="shark" data-dance="dancer_'+ dancerCounter +'"><img src="images/shark.gif"></span>');
+  this.setPosition(top,left);
   //this.color = 'green';
+  this.step();
 };
 
 AlienDancer.prototype = Object.create(BlinkyDancer.prototype);

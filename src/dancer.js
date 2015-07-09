@@ -31,7 +31,7 @@ Dancer.prototype.nodeMe = function() {
 // GET CRAZY.
 Dancer.prototype.goSomewhere = function(top, left, timeToMove) {
   timeToMove = timeToMove || 2000;
-  this.$node.animate()
+  //this.$node.animate()
   this.$node.animate({
   left: top,
   top: left
