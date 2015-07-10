@@ -106,7 +106,7 @@ $(document).ready(function(){
 //CRAZY ADD LOTS OF SHIT BUTTON
   $(".crazyShit").on("click", function(event) {
     var randomDancer = function() {
-      var dancerArray = ['AlienDancer','BlinkyDancer','KungFuKitty']; // Name dancer functions here
+      var dancerArray = ['AlienDancer','BlinkyDancer','KungFuKitty', 'LaserShark']; // Name dancer functions here
       var rando = Math.floor(Math.random() * dancerArray.length);
       return dancerArray[rando];
     };

@@ -48,7 +48,7 @@ Dancer.prototype.flip = function() {
     step: function(now,fx) {
       $(this).css('-webkit-transform','rotate('+ 720 * now +'deg)'); 
     },
-    duration:'slow'
+    duration:30000
   },'linear');
 }
 
@@ -103,3 +103,13 @@ var KungFuKitty = function(top,left,timeBetweenSteps) {
 KungFuKitty.prototype = Object.create(BlinkyDancer.prototype);
 KungFuKitty.prototype.constructor = KungFuKitty;
 
+// Kungfu cat class
+var LaserShark = function(top,left,timeBetweenSteps) {
+  BlinkyDancer.apply(this, arguments);
+  this.$node = $('<span class="shark" data-dance="dancer_'+ dancerCounter +'"><img src="images/Laser_Shark.gif"></span>');
+  this.setPosition(top,left);
+  this.step();
+}
+
+LaserShark.prototype = Object.create(BlinkyDancer.prototype);
+LaserShark.prototype.constructor = LaserShark;
