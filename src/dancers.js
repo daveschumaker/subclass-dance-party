@@ -10,7 +10,7 @@ var Dancer = function(top, left, timeBetweenSteps){
   // this.top = top;
   // this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
-  this.$node = $('<span class="dancer" data-dance="dancer_'+ dancerCounter +'"><img src="images/head-bangin.gif"></span>');
+  this.$node = $('<span class="dancer" data-dance="'+ dancerCounter +'"><img src="images/head-bangin.gif"></span>');
   this.setPosition(top,left);
   this.step();
 };
@@ -42,6 +42,15 @@ Dancer.prototype.goSomewhere = function(top, left, timeToMove) {
   }, timeToMove, function() {}); 
   //console.log('Top: ' + top + ' Left: ' + left); 
 };
+
+Dancer.prototype.flip = function() {
+  this.$node.animate({ degree: '+=1' }, {
+    step: function(now,fx) {
+      $(this).css('-webkit-transform','rotate('+ 720 * now +'deg)'); 
+    },
+    duration:'slow'
+  },'linear');
+}
 
 
 /****
